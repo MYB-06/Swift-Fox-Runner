@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
-    public static PlayerInput Instance { get; private set; }
     private PlayerAction _inputActions;
 
     public Action OnLeftMovePressed;
@@ -18,7 +17,6 @@ public class PlayerInput : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
         _inputActions = new PlayerAction();
 
         Subscribe();

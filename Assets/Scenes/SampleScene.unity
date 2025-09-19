@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 396427803}
   - component: {fileID: 396427802}
   - component: {fileID: 396427801}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -697,6 +697,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 406705214150942117}
+  - component: {fileID: 6000137105563043811}
   - component: {fileID: 6000137105563043810}
   - component: {fileID: 6000137105563043809}
   - component: {fileID: 6000137105563043808}
@@ -1453,7 +1454,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 2
 --- !u!114 &6000137105563043810
 MonoBehaviour:
@@ -1467,6 +1468,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5b78f0cc80b2dc41b83c15747365102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInput
+--- !u!114 &6000137105563043811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076141028491413279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 645db55f7ebf01346b951c87f9f54de6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  laneWidth: 2
+  jumpForce: 5
+  jumpCooldown: 0.5
+  slideHeight: 0.75
+  slideDuration: 2
+  groundCheckDistance: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &6101111709199879319
 GameObject:
   m_ObjectHideFlags: 0
