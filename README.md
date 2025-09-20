@@ -9,7 +9,6 @@ Swift Fox Runner is an endless runner game where a fox runs through the forest, 
 - **C#**  
 - **Unity New Input System**  
 - **Cinemachine**  
-- 📦 Free/third-party assets (see [Credits](#credits))
 
 ---
 
