@@ -4,17 +4,6 @@ Swift Fox Runner is an endless runner game where a fox runs through the forest, 
 
 ---
 
-## ✨ Features
-- 🎮 Character movement and input handling (implemented)  
-- 🏃 Endless runner core mechanics  
-- 🏆 Score system & increasing difficulty  
-- ⚡ Obstacles and environment interactions  
-- 🎨 Visual & audio polish  
-
-*(This section will be updated as the game development progresses.)*
-
----
-
 ## 🛠️ Technologies Used
 - **Unity 6.2**  
 - **C#**  
@@ -25,14 +14,34 @@ Swift Fox Runner is an endless runner game where a fox runs through the forest, 
 ---
 
 ## 🏗️ Code Architecture & Design Patterns
+Currently implemented:
+- **Event-Driven Architecture** - ScriptableObject-based communication
+- **Object Pooling** - Memory-efficient object reuse
+- **SOLID Principles** - Clean separation of concerns
+- **Component-Based Design** - Modular, maintainable systems
 
-*(This section will be updated as the game development progresses.)*
+*(Full architecture documentation will be added as development progresses.)*
 
 ---
 
 ## 🎯 Purpose of the Repository
-This repository exists primarily to:
-- 👀 This repository showcases Swift Fox Runner, a small-scale Unity game developed to demonstrate clean scripting, reusable mechanics, and game design skills. It also serves as a learning resource for Unity and C# enthusiasts.
+This repository showcases Swift Fox Runner, a small-scale Unity game developed to demonstrate:
+- 🧹 Clean code architecture and SOLID principles
+- 🔄 Reusable game mechanics and systems  
+- 🎮 Professional Unity development workflows
+- 📚 Learning resource for Unity and C# enthusiasts
+
+---
+
+## 📊 Development Status
+- ✅ Core movement mechanics
+- ✅ World movement system  
+- 🚧 Object spawning & pooling
+- 🚧 Chicken collection system
+- ⏳ Health & collision system
+- ⏳ UI & visual polish
+
+*(This section will be updated as the game development progresses.)*
 
 ---
 
