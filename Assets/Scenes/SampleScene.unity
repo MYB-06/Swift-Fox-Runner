@@ -740,6 +740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab54668e048d954faa47509efdf3b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BatchMover
+  objectSpawnedEvent: {fileID: 11400000, guid: 1fe5bdf5fe205c5418e9c184fb6ae1f7, type: 2}
   movableObjects:
   - {fileID: 1762447184}
   moveDirection: {x: 0, y: 0, z: -1}
