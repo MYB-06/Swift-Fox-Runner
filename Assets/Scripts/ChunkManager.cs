@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SpawnManager : MonoBehaviour
+public class ChunkManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private ObjectPool chunkPool;
