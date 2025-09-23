@@ -32,7 +32,8 @@ public class ObjectPool : MonoBehaviour
             getObject.SetActive(true);
             return getObject;
         }
-        return Instantiate(prefab, poolParent);
+        Debug.Log("Pool boş");
+        return null;
     }
     public void ReturnToPool(GameObject obj)
     {
