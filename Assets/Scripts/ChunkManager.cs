@@ -5,8 +5,8 @@ public class ChunkManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private ObjectPool chunkPool;
-    [SerializeField] private TransformEvent objectSpawnedEvent;
-    [SerializeField] private TransformEvent objectDespawnedEvent;
+    [SerializeField] private LayeredTransformEvent objectSpawnedEvent;
+    [SerializeField] private LayeredTransformEvent objectDespawnedEvent;
 
     [Header("Spawn Settings")]
     [SerializeField] private float spawnDistance = 10f;
@@ -45,7 +45,7 @@ public class ChunkManager : MonoBehaviour
         lastSpawnPosition = newChunk.transform.position;
 
         activeChunks.Add(newChunk);
-        objectSpawnedEvent.RaiseEvent(newChunk.transform);
+        objectSpawnedEvent.RaiseEvent(newChunk.transform, LayerType.Foreground);
     }
     private void CheckForDespawn()
     {
@@ -59,7 +59,7 @@ public class ChunkManager : MonoBehaviour
     }
     private void DespawnChunk(GameObject chunk)
     {
-        objectDespawnedEvent.RaiseEvent(chunk.transform);
+        objectDespawnedEvent.RaiseEvent(chunk.transform, LayerType.Foreground);
         activeChunks.Remove(chunk);
         chunkPool.ReturnToPool(chunk);
     }
