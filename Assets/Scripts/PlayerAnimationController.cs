@@ -62,12 +62,12 @@ public class PlayerAnimationController : MonoBehaviour
     private void HandleMovingLeft()
     {
         _playerAnimator.SetBool(isMovingLeftHash, true);
-        StartCoroutine(ResetBoolAfterDelay(isMovingLeftHash, 0.3f));
+        StartCoroutine(ResetBoolAfterDelay(isMovingLeftHash, 0.1f));
     }
     private void HandleMovingRight()
     {
         _playerAnimator.SetBool(isMovingRightHash, true);
-        StartCoroutine(ResetBoolAfterDelay(isMovingRightHash, 0.3f));
+        StartCoroutine(ResetBoolAfterDelay(isMovingRightHash, 0.1f));
     }
     private IEnumerator ResetBoolAfterDelay(int hash, float delay)
     {

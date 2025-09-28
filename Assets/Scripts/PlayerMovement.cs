@@ -69,8 +69,7 @@ public class PlayerMovement : MonoBehaviour
         if (currentLane != LanePosition.Left)
         {
             OnMovingLeft?.Invoke();
-            currentLane--;
-            MoveTo(currentLane);
+            StartCoroutine(DelayedLaneChange(-1));
         }
     }
     private void HandleRightMove()
@@ -78,22 +77,22 @@ public class PlayerMovement : MonoBehaviour
         if (currentLane != LanePosition.Right)
         {
             OnMovingRight?.Invoke();
-            currentLane++;
-            MoveTo(currentLane);
+            StartCoroutine(DelayedLaneChange(1));
         }
     }
     private void MoveTo(LanePosition targetLane)
     {
-        StartCoroutine(DelayedMovement(targetLane));
-    }
-    private IEnumerator DelayedMovement(LanePosition targetLane)
-    {
-        yield return null;
-
         float target = (int)targetLane * laneWidth;
         Vector3 targetPosition = new Vector3(target, transform.position.y, transform.position.z);
 
         _playerRigidbody.MovePosition(targetPosition);
+    }
+    private IEnumerator DelayedLaneChange(int direction)
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        currentLane += direction;
+        MoveTo(currentLane);
     }
     #endregion
 
