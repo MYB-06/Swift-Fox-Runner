@@ -28,6 +28,13 @@ public class PlayerMovement : MonoBehaviour
     private bool canJump = true;
     private bool isSliding = false;
 
+    // Events
+    public static event Action<LanePosition> OnLaneChanged;
+    public static event Action OnJumpStarted;
+    public static event Action OnSlideStarted;
+    public static event Action OnGroundLanded;
+    public static event Action OnGameLost;
+
     private void Awake()
     {
         _playerRigidbody = GetComponent<Rigidbody>();
@@ -78,6 +85,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 targetPosition = new Vector3(targetX, transform.position.y, transform.position.z);
 
         _playerRigidbody.MovePosition(targetPosition);
+        OnLaneChanged?.Invoke(targetLane);
     }
     #endregion
 
@@ -87,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
         if (IsGrounded() && canJump && !isSliding)
         {
             _playerRigidbody.AddForce(jumpForce * Vector3.up, ForceMode.Impulse);
+            OnJumpStarted?.Invoke();
             canJump = false;
             StartCoroutine(JumpCooldown());
         }
@@ -116,6 +125,8 @@ public class PlayerMovement : MonoBehaviour
     {
         isSliding = true;
 
+        OnSlideStarted?.Invoke();
+
         float originalHeight = _playerCollider.size.y;
         Vector3 originalSize = _playerCollider.size;
         Vector3 originalCenter = _playerCollider.center;
@@ -131,6 +142,14 @@ public class PlayerMovement : MonoBehaviour
         _playerCollider.center = originalCenter;
 
         isSliding = false;
+    }
+    #endregion
+
+    #region Public Helpers
+    public bool CanJump => canJump;
+    public bool GroundCheck()
+    {
+        return IsGrounded();
     }
     #endregion
 }
