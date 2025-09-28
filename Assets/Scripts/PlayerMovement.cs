@@ -29,7 +29,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isSliding = false;
 
     // Events
-    public static event Action<LanePosition> OnLaneChanged;
+    public static event Action OnMovingLeft;
+    public static event Action OnMovingRight;
     public static event Action OnJumpStarted;
     public static event Action OnSlideStarted;
     public static event Action OnGroundLanded;
@@ -67,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (currentLane != LanePosition.Left)
         {
+            OnMovingLeft?.Invoke();
             currentLane--;
             MoveTo(currentLane);
         }
@@ -75,17 +77,23 @@ public class PlayerMovement : MonoBehaviour
     {
         if (currentLane != LanePosition.Right)
         {
+            OnMovingRight?.Invoke();
             currentLane++;
             MoveTo(currentLane);
         }
     }
     private void MoveTo(LanePosition targetLane)
     {
-        float targetX = (int)targetLane * laneWidth;
-        Vector3 targetPosition = new Vector3(targetX, transform.position.y, transform.position.z);
+        StartCoroutine(DelayedMovement(targetLane));
+    }
+    private IEnumerator DelayedMovement(LanePosition targetLane)
+    {
+        yield return null;
+
+        float target = (int)targetLane * laneWidth;
+        Vector3 targetPosition = new Vector3(target, transform.position.y, transform.position.z);
 
         _playerRigidbody.MovePosition(targetPosition);
-        OnLaneChanged?.Invoke(targetLane);
     }
     #endregion
 

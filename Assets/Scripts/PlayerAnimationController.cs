@@ -36,13 +36,15 @@ public class PlayerAnimationController : MonoBehaviour
     }
     private void OnEnable()
     {
-        PlayerMovement.OnLaneChanged += HandleLaneChange;
+        PlayerMovement.OnMovingLeft += HandleMovingLeft;
+        PlayerMovement.OnMovingRight += HandleMovingRight;
         PlayerMovement.OnJumpStarted += HandleJumpStart;
         PlayerMovement.OnSlideStarted += HandleSlideStart;
     }
     private void OnDisable()
     {
-        PlayerMovement.OnLaneChanged -= HandleLaneChange;
+        PlayerMovement.OnMovingLeft -= HandleMovingLeft;
+        PlayerMovement.OnMovingRight -= HandleMovingRight;
         PlayerMovement.OnJumpStarted -= HandleJumpStart;
         PlayerMovement.OnSlideStarted -= HandleSlideStart;
     }
@@ -57,21 +59,16 @@ public class PlayerAnimationController : MonoBehaviour
         _playerAnimator.SetBool(isJumpingHash, true);
         StartCoroutine(ResetBoolAfterDelay(isJumpingHash, 0.5f));
     }
-
-    private void HandleLaneChange(LanePosition position)
+    private void HandleMovingLeft()
     {
-        if (position == LanePosition.Left)
-        {
-            _playerAnimator.SetBool(isMovingLeftHash, true);
-            StartCoroutine(ResetBoolAfterDelay(isMovingLeftHash, 0f));
-        }
-        else if (position == LanePosition.Right)
-        {
-            _playerAnimator.SetBool(isMovingRightHash, true);
-            StartCoroutine(ResetBoolAfterDelay(isMovingRightHash, 0f));
-        }
+        _playerAnimator.SetBool(isMovingLeftHash, true);
+        StartCoroutine(ResetBoolAfterDelay(isMovingLeftHash, 0.3f));
     }
-
+    private void HandleMovingRight()
+    {
+        _playerAnimator.SetBool(isMovingRightHash, true);
+        StartCoroutine(ResetBoolAfterDelay(isMovingRightHash, 0.3f));
+    }
     private IEnumerator ResetBoolAfterDelay(int hash, float delay)
     {
         yield return new WaitForSeconds(delay);
